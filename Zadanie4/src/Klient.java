@@ -36,11 +36,7 @@ public void setCzyStaly(boolean czyStaly){
     this.czyStaly = czyStaly;
 }
 public void wyswietlInformacje(){
-    System.out.println("Wyswietl Id" + Id);
-    System.out.println("Wyswietl Imie" + imie);
-    System.out.println("Wyswietl Nazwisko" + Nazwisko);
-    System.out.println("Wyswietl Email" + Email);
-    System.out.println("Wyswietl CzyStaly" + czyStaly);
+    System.out.println(" Id: " + Id + " Imie: " + imie + " Nazwisko: " + Nazwisko + " Email: " + Email + " CzyStaly: " + czyStaly);
 
 }
 

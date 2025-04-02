@@ -5,7 +5,15 @@ public class Zamowienie {
     private int[] ilosci;
     private String dataZamowienia;
     private String status;
+    private double wartosc;
 
+    public Zamowienie(Klient klient, Produkt[] produkty, int[] ilosci) {
+        this.klient = klient;
+        this.produkty = produkty;
+        this.ilosci = ilosci;
+    }
+
+    //gettery i settery
     public int getId(){
         return Id;
     }
@@ -42,16 +50,41 @@ public class Zamowienie {
     public void setStatus(String status){
         this.status = status;
     }
+    public double getWartosc(){
+        return wartosc;
+    }
 
-    public void obliczWartoscZamowienie(){
-        double suma = 0;
-        if( produkty != null && ilosci != null && produkty.length == ilosci.length){
-            for(int i = 0; i < produkty.length; i++){
-                suma += produkty[i].getCena() * ilosci[i];
+    public void setWartosc(double wartosc){
+        this.wartosc = wartosc;
+    }
+
+
+    //metody
+    public void obliczWartoscZamowienia() {
+        for (int i = 0; i < produkty.length; i++) {
+            if (produkty[i] != null) {
+                wartosc += produkty[i].getCena() * ilosci[i];
             }
-            System.out.println("Cała wartość zamówienia: " + suma );
+        }
+    }
+    public void zastosujZnizke(){
+        if(klient.getCzyStaly()){
+            wartosc *= 0.9;
         }
 
+    }
+    public void wyswietlSzczegoly(){
+       int ile = 0;
+       for (int i = 0; i < ilosci.length; i++) {
+           ile += ilosci[i];
+
+       }
+        System.out.println("Zamowienie ID: " + Id + ", Status: " + status);
+        System.out.println("Zamowienie Klient: " + klient.getImie() + " " + klient.getNazwisko());
+        for ( int i = 0; i<produkty.length; i++){
+            System.out.println("  " + produkty[i].getNazwa() + " " + ilosci[i]);
+        }
+        System.out.println("Łączna wartość " + wartosc);
     }
 
 

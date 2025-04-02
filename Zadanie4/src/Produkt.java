@@ -6,6 +6,7 @@ public class Produkt {
     private double cena;
     private int IloscWMagazynie;
 
+    //gettery i settery
     public int getId(){
         return Id;
     }
